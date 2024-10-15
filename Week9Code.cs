@@ -64,96 +64,133 @@ class Program
         for(int idx=0;idx<5;idx++){
             Console.Write($"{name_array[idx]} ");
         }
+}
 
+// Part 2: Put class objects into Arrays
+class Program
+{
+    static void Main(string[] args)
+    {
+        Student stu1 = new Student(studentID:111, studentName:"Alice", studentGPA:3.6);
+        Student stu2 = new Student(studentID:222, studentName:"Bob", studentGPA:3.5);
+        Student stu3 = new Student(studentID:333, studentName:"Cathy", studentGPA:3.1);
 
-    // P10
-        /* The 2d-array can be seen as a table where each row has the same amount of column
-                    
-                        1, 2
-                        3, 4
-                    
-        */  
-        // like 1d-array, three ways to declare and initialize 2d-array 
-        Console.WriteLine("\n--------Page10----------");
-        int[,] two_d_array1 = new int[2,2]{{1,2},{3,4}};
-        int[,] two_d_array2 = new int[,]{{1,2},{3,4}};
-        int[,] two_d_array3 = {{1,2},{3,4}};
+        Student[] student_array = {stu1, stu2, stu3};
+        // print the first student element in student_array
+        Console.WriteLine($"Student 1 - ID: {student_array[0].studentID}; Name: {student_array[0].studentName}; ");
+        // try to print the third student element in student_array
+    }
+}
 
-        // // // to access a specific value with row and column numbers
-        int x = two_d_array1[0,0];
-        int y = two_d_array2[1,1];
-        int z = two_d_array3[1,1];
+class Student{
+    public int studentID {get; set;} = 0;
+    public string studentName {get;set;} = string.Empty;
+    public double studentGPA {get;set;} = 0;
+    // constructor
+    public Student(int studentID, string studentName, double studentGPA){
+        this.studentID = studentID;
+        this.studentName = studentName;
+        this.studentGPA = studentGPA;
+    }
+}
 
-        Console.WriteLine(x);   
-        Console.WriteLine(y);    
-        Console.WriteLine(z);  
+// iterate objects in Arrays
+class Program
+{
+    static void Main(string[] args)
+    {
+        Student stu1 = new Student(studentID:111, studentName:"Alice", studentGPA:3.6);
+        Student stu2 = new Student(studentID:222, studentName:"Bob", studentGPA:3.5);
+        Student stu3 = new Student(studentID:333, studentName:"Cathy", studentGPA:3.1);
+        Student[] student_array = {stu1, stu2, stu3};
+        foreach(Student stu in student_array){
+            stu.printStuInfo();
+        }       
+    }
+}
 
-            
-        // P12
-        Console.WriteLine("\n------------------");
-        // Iterate2DArray(){
-        int[ , ] arr1 = {
-            {1, 2, 3},
-            {4, 5, 6},
-            {7, 8, 9}
-            };
-        for (int row = 0; row < 3; row++) {
-            for (int col = 0; col< 3; col++) {
-            Console.Write(arr1[row, col]+" ");
-            }
-            Console.WriteLine();
-        }
+class Student{
+    public int studentID {get; set;} = 0;
+    public string studentName {get;set;} = string.Empty;
+    public double studentGPA {get;set;} = 0;
+        public void printStuInfo(){
+        Console.WriteLine($"Student ID: {studentID}; Student Name: {studentName}; Student GPA: {studentGPA}");
+    }
+    // constructor
+    public Student(int studentID, string studentName, double studentGPA){
+        this.studentID = studentID;
+        this.studentName = studentName;
+        this.studentGPA = studentGPA;
+    }
+}
+// Exercise 2: Sample Code
+class Program
+{
+    static void Main(string[] args)
+    {   // 2.1 create 8 food objects
+        Food food1 = new Food(foodName:"Juice", foodPrice:3.49, foodType:"Drink");
+        Food food2 = new Food(foodName:"Orange", foodPrice:0.99, foodType:"Fruit");
+        Food food3 = new Food("Chicken", 8.99, "Meat");
+        Food food4 = new Food("Broccoli", 2.49, "Vegetable");
+        Food food5 = new Food("Banana", 0.59, "Fruit");
+        Food food6 = new Food("Beef", 14.99, "Meat");
+        Food food7 = new Food("Carrot", 1.29, "Vegetable");
+        Food food8 = new Food("Soda", 2.99, "Drink");
+        // 2.2 save food objects in the shopping_list array
+        Food[] shopping_list = {food1, food2, food3, food4, food5, food6, food7, food8};
 
-        foreach(int num in arr1){
-            Console.Write(num + " ");
-        }
-
-
-
-        // Call Exercise2 mehtod
-            Console.WriteLine("\n--------Exercise2----------");
-        int[ , ] arr_2d = {
-            {1, 2, 3},
-            {4, 5, 6},
-            {7, 8, 9}
-          };
-          Exercise2(arr_2d);
-        
-        Console.WriteLine("\n--------JaggedArr----------");
-        // Jagged Array
-        int[ ][ ] jaggedArr = new int[ ][ ] 
-        {
-            new int[ ] {1,2,3,4},
-            new int[ ] {5,6},
-            new int[ ] {7,8,9}
-        };
-        int num = jaggedArr[2][2];
-        Console.WriteLine($"Value of num: {num}");
-
-        foreach(var arr3 in jaggedArr){
-            Console.WriteLine(arr3);
-        }
-
+        // 3.2 call TotalPrice() method
+        TotalPrice(shopping_list);
+        // 4.2 call TotalFruitPrice() method
+        TotalFruitPrice(shopping_list);
+        // 5.2 call AveragePrice() method
+        AveragePrice(shopping_list);        
     }
     
-        // EvenElement(){
-        static void Exercise2(int[,] arr_2d){
-            Console.WriteLine("--->Method1 with foreach");
-            // method 1
-            foreach(int val in arr_2d){
-              if(val%2==0){
-                Console.Write(val +" ");
-              }
-            }
-            // method 2
-            Console.WriteLine("\n--->Method2 with nested for loop");
+    // 3.1 calculate the total price of all food items in the shopping_list and print the result
+    public static void TotalPrice(Food[] shopping_list){
+        double totalPrice = 0;
+        foreach(Food foodItem in shopping_list){
+            totalPrice += foodItem.foodPrice;
+        }
+        Console.WriteLine($"3. The total price of all food items is: {totalPrice}");
+    }
 
-            for (int row = 0; row < 3; row++) {
-              for (int col = 0; col<=2; col++) {
-                if(arr_2d[row,col]%2==0){
-                  Console.Write(arr_2d[row, col]+" ");
-                }
-              }
+    // 4.1 calculate the total price of all food items categorized as "Fruit" and print the result.
+    public static void TotalFruitPrice(Food[] shopping_list){
+        double totalFruit = 0;
+        foreach(var foodItem in shopping_list){
+            if (foodItem.foodType == "Fruit"){
+                totalFruit += foodItem.foodPrice;
             }
         }
+        Console.WriteLine($"4. The total price of all food items is: {totalFruit}");
+    }
+
+    // 5.1 Create a method call AveragePrice(Food[] shopping_list) to calculate the average price of all food items in the shopping_list array.
+    public static void AveragePrice(Food[] shopping_list){
+        double totalPrice = 0;
+        int countFood = 0;
+        foreach(var foodItem in shopping_list){
+                totalPrice += foodItem.foodPrice;
+                countFood++;
+        }
+        if (countFood > 0){
+            double averagePrice = totalPrice/countFood;
+            Console.WriteLine($"5. The average price of all food items is: {averagePrice}");
+        }
+    }
+}
+
+// 1. create Food class
+class Food{
+    public string foodName {get;set;} = string.Empty;
+    public double foodPrice {get;set;} = 0;
+    public string foodType {get;set;} = string.Empty;
+    // constructor
+    public Food(string foodName, double foodPrice, string foodType){
+        this.foodName = foodName;
+        this.foodPrice = foodPrice;
+        this.foodType = foodType;
+    }
 }
