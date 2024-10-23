@@ -66,7 +66,74 @@ class Program
         }
 }
 
-// Part 2: Put class objects into Arrays
+    // Part 2: Two-Dimensional Array (2D Array) and Jagged Arrays
+   /* The 2d-array can be seen as a table where each row has the same amount of column       
+                      1, 2
+                      3, 4  
+    */  
+    // like 1d-array, three ways to declare and initialize 2d-array
+    int[,] two_d_array1 = new int[2,2]{{1,2},{3,4}};
+    int[,] two_d_array2 = new int[,]{{1,2},{3,4}};
+    int[,] two_d_array3 = {{1,2},{3,4}};
+
+    // Iterate 2D array elements
+        int[ , ] arr1 = {
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9}
+          };
+
+        for (int row = 0; row < 3; row++) {
+          for (int col = 0; col< 3; col++) {
+            Console.Write(arr1[row, col]+" ");
+          }
+          Console.WriteLine();
+        }
+   // Exercise 2 Sample Code
+   static void Main(string[] args)
+    {
+         int[ , ] arr_2d = {
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9}
+          };
+          Exercise2(arr_2d);
+    }
+   
+    static void Exercise2(int[,] arr_2d){
+        Console.WriteLine("--->Method1 with foreach");
+        // method 1
+        foreach(int val in arr_2d){
+            if(val%2==0){
+            Console.Write(val +" ");
+            }
+        }
+        // method 2
+        Console.WriteLine("\n--->Method2 with nested for loop");
+        for (int row = 0; row < 3; row++) {
+            for (int col = 0; col<=2; col++) {
+            if(arr_2d[row,col]%2==0){
+                Console.Write(arr_2d[row, col]+" ");
+            }
+            }
+        }
+    }
+
+    // Jagged Array
+    int[ ][ ] jaggedArr = new int[ ][ ]
+    {
+        new int[ ] {1,2,3,4},
+        new int[ ] {5,6},
+        new int[ ] {7,8,9}
+    };
+    int num = jaggedArr[2][2];
+    Console.WriteLine($"Value of num: {num}");
+
+    
+
+
+    
+// Part 3: Put class objects into Arrays
 class Program
 {
     static void Main(string[] args)
