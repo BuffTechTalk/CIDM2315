@@ -67,6 +67,6 @@ class Program
             }
             Console.WriteLine();
         }
-    }
-    
+        Console.WriteLine($"N is: {userNumber}; shape is {userChoice}");
+    } 
 }
