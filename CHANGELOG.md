@@ -11,3 +11,5 @@ Uploaded Homework4.cs file
 Found issue with results in Homework4.cs file.  Fixed issue and re-uploaded Homework4.cs file.
 02/18/2026
 Uploaded Homework5.cs file
+03/08/2026
+Uploaded Homework6.cs file
